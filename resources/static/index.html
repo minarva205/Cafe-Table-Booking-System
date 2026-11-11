@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraBite | Luxury Artisanal Cafe & Table Reservation</title>
+  <meta name="description" content="Experience artisanal gastronomy, coffee craft, and seamless table reservations at AuraBite." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* AuraBite Luxury Dark Design Tokens */
+    :root {
+      --bg-primary: #0b0d12;
+      --bg-secondary: #121620;
+      --bg-card: rgba(22, 28, 42, 0.75);
+      --bg-card-hover: rgba(30, 39, 58, 0.9);
+      --bg-glass: rgba(15, 20, 32, 0.75);
+      
+      --accent-gold: #f59e0b;
+      --accent-amber: #d97706;
+      --accent-warm: #fbbf24;
+      --accent-rose: #f43f5e;
+      --accent-emerald: #10b981;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --border-light: rgba(245, 158, 11, 0.2);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(245, 158, 11, 0.6);
+      
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.25);
+      --shadow-card: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-amber); }
+
+    .font-serif { font-family: var(--font-serif); }
+    .text-gold { color: var(--accent-gold); }
+    .text-gradient {
+      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-ai-gradient {
+      background: linear-gradient(135deg, #c084fc 0%, #f59e0b 50%, #38bdf8 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-muted { color: var(--text-muted); }
+    .text-secondary { color: var(--text-secondary); }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-padding { padding: 5rem 0; }
+
+    .btn {
+      font-family: var(--font-sans); font-weight: 600;
+      padding: 0.75rem 1.75rem; border-radius: var(--radius-full);
+      border: none; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      transition: var(--transition); text-decoration: none; font-size: 0.95rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #0b0d12; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(245, 158, 11, 0.55);
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    }
+    .btn-ai {
+      background: linear-gradient(135deg, #8b5cf6 0%, #d97706 100%);
+      color: #ffffff; box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+    }
+    .btn-ai:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(139, 92, 246, 0.55);
+      background: linear-gradient(135deg, #a855f7 0%, #f59e0b 100%);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text-primary);
+      border: 1px solid var(--border-light);
+    }
+    .btn-outline:hover {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: var(--accent-gold); color: var(--accent-gold);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.07); color: var(--text-primary);
+      border: 1px solid var(--border-glass); border-radius: var(--radius-md);
+      padding: 0.6rem 1.2rem;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.3);
+    }
+    .btn-sm { padding: 0.4rem 0.9rem; font-size: 0.85rem; border-radius: var(--radius-md); }
+    .btn-danger {
+      background: rgba(244, 63, 94, 0.15); color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+    .btn-danger:hover { background: rgba(244, 63, 94, 0.3); }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.3rem 0.8rem; border-radius: var(--radius-full);
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-rose { background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); border: 1px solid rgba(244, 63, 94, 0.3); }
+    .badge-blue { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-purple { background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.4); }
+
+    .glass-card {
+      background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass); border-radius: var(--radius-md); transition: var(--transition);
+    }
+    .glass-card:hover {
+      background: var(--bg-card-hover); border-color: var(--border-light); box-shadow: var(--shadow-card);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11, 13, 18, 0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass); padding: 1rem 0; transition: var(--transition);
+    }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; }
+    .logo-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); cursor: pointer; }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #0b0d12; font-weight: 900; box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    }
+    .logo-text { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: var(--transition); cursor: pointer; }
+    .nav-links a:hover { color: var(--accent-gold); }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    /* Hero */
+    .hero-section {
+      min-height: 90vh; display: flex; align-items: center; padding-top: 6rem;
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-full);
+      color: var(--accent-gold); font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .hero-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.15; margin-bottom: 1.25rem; font-weight: 800; }
+    .hero-subtitle { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; max-width: 540px; }
+
+    .quick-booking-card {
+      background: rgba(22, 28, 42, 0.8); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 1.75rem;
+      backdrop-filter: blur(24px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-input {
+      background: rgba(15, 20, 32, 0.9); border: 1px solid var(--border-glass);
+      color: var(--text-primary); padding: 0.75rem 1rem; border-radius: var(--radius-md);
+      font-family: var(--font-sans); outline: none; transition: var(--transition); width: 100%;
+    }
+    .form-input:focus { border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15); }
+
+    .section-header { text-align: center; max-width: 650px; margin: 0 auto 3rem auto; }
+    .section-title { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .filter-tabs { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass);
+      color: var(--text-secondary); padding: 0.6rem 1.4rem; border-radius: var(--radius-full);
+      cursor: pointer; font-weight: 500; transition: var(--transition);
+    }
+    .tab-btn:hover, .tab-btn.active {
+      background: rgba(245, 158, 11, 0.15); border-color: var(--accent-gold); color: var(--accent-gold);
+    }
+    .tables-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .table-card {
+      padding: 1.5rem; border-radius: var(--radius-md); position: relative; cursor: pointer;
+      display: flex; flex-direction: column; justify-content: space-between; min-height: 220px;
+    }
+    .table-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .table-num { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; }
+    .table-features { margin: 1rem 0; font-size: 0.85rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.75rem; }
+    .menu-card { overflow: hidden; display: flex; flex-direction: column; position: relative; }
+    .menu-img { width: 100%; height: 190px; object-fit: cover; transition: transform 0.5s ease; }
+    .menu-card:hover .menu-img { transform: scale(1.05); }
+    .menu-content { padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .menu-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+    .menu-price { font-weight: 700; font-size: 1.2rem; color: var(--accent-gold); }
+    .preorder-counter { display: flex; align-items: center; gap: 0.5rem; margin-top: auto; padding-top: 1rem; }
+    .counter-btn {
+      width: 32px; height: 32px; border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-glass);
+      color: var(--text-primary); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-weight: 700; transition: var(--transition);
+    }
+    .counter-btn:hover { background: var(--accent-gold); color: #0b0d12; }
+
+    .preorder-floating-bar {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+      background: rgba(22, 28, 42, 0.95); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 1rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(20px);
+      transform: translateY(150%); transition: transform 0.4s ease;
+    }
+    .preorder-floating-bar.active { transform: translateY(0); }
+
+    /* Floating AI Sommelier Button */
+    .ai-floating-btn {
+      position: fixed; bottom: 2rem; left: 2rem; z-index: 90;
+      background: linear-gradient(135deg, #8b5cf6 0%, #d97706 100%);
+      color: #fff; padding: 0.85rem 1.4rem; border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5); border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer; display: flex; align-items: center; gap: 0.6rem; font-weight: 700;
+      transition: var(--transition); animation: aiPulse 3s infinite ease-in-out;
+    }
+    .ai-floating-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.7); }
+    @keyframes aiPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+      50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.8); }
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
+      z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-container {
+      background: var(--bg-secondary); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); width: 100%; max-width: 650px;
+      max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+    }
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: rgba(255, 255, 255, 0.08); border: none; color: var(--text-secondary);
+      width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .modal-close:hover { color: #fff; background: rgba(255, 255, 255, 0.2); }
+
+    /* Admin Dashboard & AI Intelligence */
+    .admin-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+    .stat-card { padding: 1.25rem; border-radius: var(--radius-md); background: rgba(18, 22, 32, 0.8); border: 1px solid var(--border-glass); }
+    .stat-val { font-size: 1.8rem; font-weight: 800; color: var(--accent-gold); margin-top: 0.5rem; }
+
+    .ai-insight-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(245, 158, 11, 0.08) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.3); border-radius: var(--radius-md);
+      padding: 1.25rem; margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 1rem;
+    }
+
+    /* Toast */
+    .toast-container { position: fixed; top: 5rem; right: 2rem; z-index: 300; display: flex; flex-direction: column; gap: 0.75rem; }
+    .toast {
+      background: rgba(22, 28, 42, 0.95); border: 1px solid var(--accent-gold);
+      color: var(--text-primary); padding: 1rem 1.5rem; border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(16px);
+      display: flex; align-items: center; gap: 0.75rem; animation: slideIn 0.3s ease-out forwards;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Interactive Preloader */
+    #interactiveLoader {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99999;
+      background: #07090e; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none; cursor: pointer;
+    }
+    #interactiveLoader.fade-out { opacity: 0; transform: scale(1.04); pointer-events: none; }
+    .loader-backdrop {
+      position: absolute; width: 450px; height: 450px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%);
+      filter: blur(60px); animation: pulseGlow 3s infinite ease-in-out;
+    }
+    @keyframes pulseGlow { 0%, 100% { transform: scale(0.9); opacity: 0.5; } 50% { transform: scale(1.25); opacity: 1; } }
+    .loader-content {
+      position: relative; z-index: 2; text-align: center;
+      display: flex; flex-direction: column; align-items: center; padding: 2rem; max-width: 480px;
+    }
+    .loader-logo-ring { position: relative; width: 96px; height: 96px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
+    .loader-aura-pulse { position: absolute; inset: -12px; border-radius: 50%; border: 2px dashed rgba(245, 158, 11, 0.45); animation: spinRing 8s linear infinite; }
+    @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .loader-icon {
+      width: 72px; height: 72px; background: linear-gradient(135deg, #fbbf24, #d97706);
+      border-radius: 22px; display: flex; align-items: center; justify-content: center;
+      color: #0b0d12; font-weight: 900; font-size: 2.2rem;
+      box-shadow: 0 0 40px rgba(245, 158, 11, 0.65); animation: iconBounce 2s infinite ease-in-out;
+    }
+    @keyframes iconBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .loader-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.3rem; }
+    .loader-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; }
+    .loader-progress-container {
+      width: 290px; height: 8px; background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full); overflow: hidden; margin-bottom: 0.75rem;
+      border: 1px solid var(--border-glass);
+    }
+    .loader-progress-bar {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24, #f43f5e);
+      border-radius: var(--radius-full); transition: width 0.15s ease-out;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.85);
+    }
+    .loader-percent { font-weight: 700; color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 1.25rem; }
+    .loader-interactive-tip { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .loader-enter-btn { opacity: 0; transform: translateY(10px); pointer-events: none; transition: all 0.3s ease; }
+    .loader-enter-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    /* Language Switcher */
+    .lang-switcher-container { position: relative; display: inline-block; }
+    .lang-pill-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-glass);
+      color: var(--text-primary); padding: 0.4rem 0.85rem; border-radius: var(--radius-full);
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+    }
+    .lang-pill-btn:hover { background: rgba(245, 158, 11, 0.15); border-color: var(--accent-gold); color: var(--accent-gold); }
+    .lang-dropdown-menu {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: rgba(18, 22, 32, 0.95); border: 1px solid var(--border-light);
+      border-radius: var(--radius-md); padding: 0.6rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+      display: none; flex-direction: column; gap: 0.35rem; min-width: 185px; z-index: 300;
+    }
+    .lang-dropdown-menu.active { display: flex; }
+    .lang-option {
+      display: flex; align-items: center; gap: 0.6rem; padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-sm); color: var(--text-secondary);
+      background: transparent; border: none; cursor: pointer; text-align: left;
+      font-size: 0.85rem; font-family: var(--font-sans); transition: var(--transition); width: 100%;
+    }
+    .lang-option:hover { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); }
+    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    body { top: 0px !important; }
+    #google_translate_element { display: none; }
+
+    /* Login Card */
+    .login-card {
+      max-width: 420px; width: 100%; padding: 2.5rem;
+      background: var(--bg-secondary); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+    }
+    .login-card h2 { font-family: var(--font-serif); margin-bottom: 0.5rem; font-size: 1.8rem; }
+    .login-card p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem; }
+
+    /* User Avatar Pill */
+    .user-pill {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.9rem 0.35rem 0.5rem;
+      background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; color: var(--accent-gold);
+    }
+    .user-avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      display: flex; align-items: center; justify-content: center;
+      color: #0b0d12; font-weight: 900; font-size: 0.7rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-secondary); border-top: 1px solid var(--border-glass);
+      padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.5rem; }
+      .nav-links { display: none; }
+      .nav-actions { gap: 0.4rem; }
+      .ai-floating-btn span.btn-label { display: none; }
+    }
+  </style>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,fr,de,hi,it,ja,zh-CN,ar,pt,ru,ko',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+  <!-- INTERACTIVE PRELOADER -->
+  <div id="interactiveLoader" onclick="boostLoadingProgress()">
+    <div class="loader-backdrop"></div>
+    <div class="loader-content">
+      <div class="loader-logo-ring">
+        <div class="loader-aura-pulse"></div>
+        <div class="loader-icon">AB</div>
+      </div>
+      <h2 class="loader-title font-serif">Aura<span class="text-gold">Bite</span></h2>
+      <p class="loader-subtitle">Crafting Gastronomy & Artisanal Reservations</p>
+      <div class="loader-progress-container">
+        <div id="loaderBar" class="loader-progress-bar"></div>
+      </div>
+      <div class="loader-percent"><span id="loaderPercent">0</span>%</div>
+      <div class="loader-interactive-tip">⚡ <em>Click anywhere to accelerate!</em></div>
+      <button id="loaderEnterBtn" class="btn btn-primary btn-sm loader-enter-btn" onclick="event.stopPropagation(); finishLoadingNow();">
+        Enter AuraBite ✨
+      </button>
+    </div>
+  </div>
+
+  <div id="google_translate_element"></div>
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- FLOATING AI SOMMELIER BUTTON (User Side AI) -->
+  <div class="ai-floating-btn" onclick="openAiSommelierModal()" title="Ask AuraAI Sommelier">
+    <span style="font-size:1.3rem;">🤖</span>
+    <span class="btn-label">AuraAI Sommelier</span>
+  </div>
+
+  <!-- ===== GLOBAL NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a class="logo-brand" onclick="goHome()">
+        <div class="logo-icon">AB</div>
+        <div class="logo-text">Aura<span class="text-gold">Bite</span></div>
+      </a>
+
+      <!-- Nav links change based on view -->
+      <ul class="nav-links" id="navLinksList">
+        <li><a onclick="goHome()">Home</a></li>
+        <li><a href="#publicMenu">Menu</a></li>
+        <li><a href="#publicReviews">Reviews</a></li>
+        <li><a href="#publicContact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions" id="navActionsArea">
+        <!-- AI Assistant Quick Trigger -->
+        <button class="btn btn-ai btn-sm" onclick="openAiSommelierModal()">🤖 AuraAI</button>
+
+        <!-- Language Switcher -->
+        <div class="lang-switcher-container">
+          <button class="lang-pill-btn" onclick="toggleLangDropdown()" title="Change Language">
+            <span>🌐</span>
+            <span id="currentLangLabel">🇮🇳 HI</span>
+            <span style="font-size:0.65rem;opacity:0.7;">▼</span>
+          </button>
+          <div id="langDropdownMenu" class="lang-dropdown-menu">
+            <button class="lang-option" onclick="changeLanguage('en','English','🇺🇸')">🇺🇸 English</button>
+            <button class="lang-option" onclick="changeLanguage('hi','Hindi','🇮🇳')">🇮🇳 हिन्दी</button>
+            <button class="lang-option" onclick="changeLanguage('es','Spanish','🇪🇸')">🇪🇸 Español</button>
+            <button class="lang-option" onclick="changeLanguage('fr','French','🇫🇷')">🇫🇷 Français</button>
+            <button class="lang-option" onclick="changeLanguage('de','German','🇩🇪')">🇩🇪 Deutsch</button>
+            <button class="lang-option" onclick="changeLanguage('ja','Japanese','🇯🇵')">🇯🇵 日本語</button>
+            <button class="lang-option" onclick="changeLanguage('zh-CN','Chinese','🇨🇳')">🇨🇳 中文</button>
+            <button class="lang-option" onclick="changeLanguage('ar','Arabic','🇸🇦')">🇸🇦 العربية</button>
+          </div>
+        </div>
+
+        <!-- Public Nav Buttons (shown when not logged in) -->
+        <div id="publicNavBtns" style="display:flex; gap:0.5rem;">
+          <button class="btn btn-outline btn-sm" onclick="openLoginModal('user')">👤 User Login</button>
+          <button class="btn btn-secondary btn-sm" onclick="openLoginModal('admin')">🔐 Admin Login</button>
+        </div>
+
+        <!-- User Nav Buttons (shown when user logged in) -->
+        <div id="userNavBtns" style="display:none; align-items:center; gap:0.75rem;">
+          <div class="user-pill"><div class="user-avatar" id="userAvatarInit">U</div><span id="userNameLabel">User</span></div>
+          <button class="btn btn-outline btn-sm" onclick="openLookupModal()">Find Booking</button>
+          <button class="btn btn-danger btn-sm" onclick="logoutUser()">Logout</button>
+        </div>
+
+        <!-- Admin Nav Buttons (shown when admin logged in) -->
+        <div id="adminNavBtns" style="display:none; align-items:center; gap:0.75rem;">
+          <div class="user-pill"><div class="user-avatar">A</div><span>Admin</span></div>
+          <button class="btn btn-outline btn-sm" onclick="goHome()">View Public Site</button>
+          <button class="btn btn-danger btn-sm" onclick="logoutAdmin()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PUBLIC LANDING PAGE (visible to all) ===== -->
+  <div id="publicView">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-badge">✨ Artisanal Gastronomy & Coffee Sanctuary</div>
+          <h1 class="hero-title">Reserve Your <span class="text-gradient">Exclusive Culinary</span> Experience</h1>
+          <p class="hero-subtitle">Immerse yourself in elevated artisanal dining, handcrafted espresso, and effortless online table reservations tailored to your mood.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="openLoginModal('user')">Login & Book a Table</button>
+            <button class="btn btn-ai" onclick="openAiSommelierModal()">🤖 Ask AuraAI Sommelier</button>
+          </div>
+        </div>
+
+        <div class="quick-booking-card">
+          <h3 class="font-serif" style="margin-bottom:1rem;font-size:1.4rem;">Quick Table Availability</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Date</label>
+              <input type="date" id="heroDate" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Guests</label>
+              <select id="heroGuests" class="form-input">
+                <option value="2">2 People</option>
+                <option value="4" selected>4 People</option>
+                <option value="6">6 People</option>
+                <option value="8">8+ Party</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ambience Zone</label>
+              <select id="heroZone" class="form-input">
+                <option value="ALL">All Zones</option>
+                <option value="Window View">Window View</option>
+                <option value="Main Dining">Main Dining</option>
+                <option value="Patio Garden">Patio Garden</option>
+                <option value="VIP Lounge">VIP Lounge</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="applyHeroQuickFilter()">Search Available Tables</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Tables Showcase (read-only) -->
+    <section id="publicTables" class="section-padding" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-gold" style="margin-bottom:0.75rem;">Interactive Floor Plan</div>
+          <h2 class="section-title">Explore Our Tables</h2>
+          <p class="text-secondary">Browse our exclusive dining zones. Login to reserve your preferred table.</p>
+        </div>
+        <div class="filter-tabs" id="zoneTabs">
+          <button class="tab-btn active" onclick="filterZone('ALL')">All Zones</button>
+          <button class="tab-btn" onclick="filterZone('Window View')">Window View</button>
+          <button class="tab-btn" onclick="filterZone('Main Dining')">Main Dining</button>
+          <button class="tab-btn" onclick="filterZone('Patio Garden')">Patio Garden</button>
+          <button class="tab-btn" onclick="filterZone('VIP Lounge')">VIP Lounge</button>
+        </div>
+        <div id="tablesGrid" class="tables-grid"></div>
+      </div>
+    </section>
+
+    <!-- Public Menu Showcase (read-only) -->
+    <section id="publicMenu" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-gold" style="margin-bottom:0.75rem;">Gourmet Offerings</div>
+          <h2 class="section-title">Our Artisanal Menu</h2>
+          <p class="text-secondary">Browse our handcrafted coffees and dishes. Login to pre-order with your reservation.</p>
+          <div style="margin-top:1.25rem;">
+            <button class="btn btn-ai btn-sm" onclick="openAiSommelierModal()">✨ AI Taste Pairings</button>
+          </div>
+        </div>
+        <div class="filter-tabs" id="menuTabs">
+          <button class="tab-btn active" onclick="filterMenu('ALL')">All Items</button>
+          <button class="tab-btn" onclick="filterMenu('Coffee & Brews')">Coffee & Brews</button>
+          <button class="tab-btn" onclick="filterMenu('Bakery & Pastries')">Bakery & Pastries</button>
+          <button class="tab-btn" onclick="filterMenu('Artisanal Mains')">Artisanal Mains</button>
+          <button class="tab-btn" onclick="filterMenu('Desserts')">Desserts</button>
+        </div>
+        <div id="menuGrid" class="menu-grid"></div>
+      </div>
+    </section>
+
+    <!-- Public Reviews -->
+    <section id="publicReviews" class="section-padding" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-gold" style="margin-bottom:0.75rem;">Guest Testimonials</div>
+          <h2 class="section-title">Loved by Coffee & Culinary Enthusiasts</h2>
+          <p class="text-secondary">Read what our valued guests say about their dining experience.</p>
+          <div style="margin-top:1.5rem;">
+            <button class="btn btn-outline btn-sm" onclick="openReviewModal()">Write a Review</button>
+          </div>
+        </div>
+        <div id="reviewsGrid" class="tables-grid"></div>
+      </div>
+    </section>
+
+    <!-- Public Contact -->
+    <section id="publicContact" class="section-padding">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="badge badge-gold" style="margin-bottom:0.75rem;">Get in Touch</div>
+            <h2 class="section-title">We're Here for Your Special Requests</h2>
+            <p class="text-secondary" style="margin-bottom:2rem;">Have a private event, special dietary preference, or custom table arrangement? Drop us a message.</p>
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div class="glass-card" style="padding:1.25rem;">
+                <h4 style="color:var(--accent-gold);margin-bottom:0.25rem;">Location & Atmosphere</h4>
+                <p class="text-secondary" style="font-size:0.9rem;">742 Evergreen Boulevard, Luxury Dining Quarter</p>
+              </div>
+              <div class="glass-card" style="padding:1.25rem;">
+                <h4 style="color:var(--accent-gold);margin-bottom:0.25rem;">Opening Hours</h4>
+                <p class="text-secondary" style="font-size:0.9rem;">Mon - Sun: 08:00 AM - 11:00 PM</p>
+              </div>
+            </div>
+          </div>
+          <div class="quick-booking-card">
+            <h3 class="font-serif" style="margin-bottom:1.25rem;font-size:1.4rem;">Send an Inquiry</h3>
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="contactName" class="form-input" required />
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="contactEmail" class="form-input" required />
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Subject</label>
+                <input type="text" id="contactSubject" class="form-input" placeholder="Table reservation query, VIP, etc." required />
+              </div>
+              <div class="form-group" style="margin-bottom:1.25rem;">
+                <label class="form-label">Message</label>
+                <textarea id="contactMessage" class="form-input" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer"><div class="container">© 2026 AuraBite. Luxury Cafe & Artisanal Dining Experience. All rights reserved.</div></div>
+  </div>
+
+  <!-- ===== USER PORTAL (shown after user login) ===== -->
+  <div id="userPortalView" style="display:none; padding-top:6rem;" class="section-padding">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div class="badge badge-blue">User Portal</div>
+          <h1 class="font-serif" style="font-size:2.2rem;margin-top:0.4rem;">Welcome, <span class="text-gold" id="portalUserName">User</span></h1>
+        </div>
+        <button class="btn btn-ai btn-sm" onclick="openAiSommelierModal()">🤖 AuraAI Taste Sommelier</button>
+      </div>
+
+      <!-- User Portal Tabs -->
+      <div class="filter-tabs" style="justify-content:flex-start;">
+        <button class="tab-btn active" onclick="switchUserTab('book')">Book a Table</button>
+        <button class="tab-btn" onclick="switchUserTab('menu')">Pre-order Menu</button>
+        <button class="tab-btn" onclick="switchUserTab('myBookings')">My Bookings</button>
+      </div>
+
+      <!-- Book a Table Tab -->
+      <div id="userBookTab" style="margin-top:1.5rem;">
+        <div class="filter-tabs" id="userZoneTabs">
+          <button class="tab-btn active" onclick="filterUserZone('ALL')">All Zones</button>
+          <button class="tab-btn" onclick="filterUserZone('Window View')">Window View</button>
+          <button class="tab-btn" onclick="filterUserZone('Main Dining')">Main Dining</button>
+          <button class="tab-btn" onclick="filterUserZone('Patio Garden')">Patio Garden</button>
+          <button class="tab-btn" onclick="filterUserZone('VIP Lounge')">VIP Lounge</button>
+        </div>
+        <div id="userTablesGrid" class="tables-grid"></div>
+      </div>
+
+      <!-- Pre-order Menu Tab -->
+      <div id="userMenuTab" style="display:none; margin-top:1.5rem;">
+        <div class="filter-tabs" id="userMenuTabs">
+          <button class="tab-btn active" onclick="filterUserMenu('ALL')">All Items</button>
+          <button class="tab-btn" onclick="filterUserMenu('Coffee & Brews')">Coffee & Brews</button>
+          <button class="tab-btn" onclick="filterUserMenu('Bakery & Pastries')">Bakery & Pastries</button>
+          <button class="tab-btn" onclick="filterUserMenu('Artisanal Mains')">Artisanal Mains</button>
+          <button class="tab-btn" onclick="filterUserMenu('Desserts')">Desserts</button>
+        </div>
+        <div id="userMenuGrid" class="menu-grid"></div>
+      </div>
+
+      <!-- My Bookings Tab -->
+      <div id="userMyBookingsTab" style="display:none; margin-top:1.5rem;">
+        <div class="glass-card" style="padding:1.5rem;">
+          <h3 style="margin-bottom:1rem;">My Reservations</h3>
+          <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;">
+            <input type="text" id="lookupRefInput" class="form-input" placeholder="Enter Ref Code (AB-XXXXX)" style="max-width:300px;" />
+            <button class="btn btn-primary btn-sm" onclick="performLookup()">Search</button>
+          </div>
+          <div id="lookupResultArea"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ADMIN PORTAL (shown after admin login) ===== -->
+  <div id="adminView" style="display:none; padding-top:6rem;" class="section-padding container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+      <div>
+        <div class="badge badge-rose">Admin Portal</div>
+        <h1 class="font-serif" style="font-size:2.2rem;margin-top:0.4rem;">AuraBite Operations Control</h1>
+      </div>
+    </div>
+
+    <!-- AI Intelligence Insight Card (Admin Side AI Feature 1) -->
+    <div class="ai-insight-card">
+      <div style="font-size:1.8rem;">🤖</div>
+      <div style="flex-grow:1;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">
+          <h4 class="text-ai-gradient" style="font-size:1.1rem;font-weight:700;">AuraAI Business Intelligence & Demand Forecast</h4>
+          <span class="badge badge-purple">LIVE AI INSIGHT</span>
+        </div>
+        <p class="text-secondary" style="font-size:0.9rem;" id="aiInsightText">
+          📈 <strong>Demand Surge Forecast:</strong> Weekend VIP Lounge table demand predicted at 98%. Recommending minimum spend threshold of ₹2,500. Sentiment Analysis: 98.4% Positive guest score.
+        </p>
+      </div>
+    </div>
+
+    <div class="admin-stats-grid">
+      <div class="stat-card">
+        <div class="text-secondary" style="font-size:0.85rem;">Total Bookings</div>
+        <div class="stat-val" id="statBookings">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="text-secondary" style="font-size:0.85rem;">Total Revenue</div>
+        <div class="stat-val" id="statRevenue">₹0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="text-secondary" style="font-size:0.85rem;">Available Tables</div>
+        <div class="stat-val" id="statTables">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="text-secondary" style="font-size:0.85rem;">AI Sentiment Score</div>
+        <div class="stat-val" style="color:#c084fc;">98.4% 💚</div>
+      </div>
+    </div>
+
+    <div class="filter-tabs" style="justify-content:flex-start;">
+      <button class="tab-btn active" onclick="switchAdminTab('reservations')">All Reservations</button>
+      <button class="tab-btn" onclick="switchAdminTab('tables')">Manage Tables</button>
+      <button class="tab-btn" onclick="switchAdminTab('inquiries')">Customer Inquiries</button>
+    </div>
+
+    <div id="adminReservationsPanel" class="glass-card" style="padding:1.5rem;margin-top:1.5rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h3>Customer Reservations</h3>
+        <button class="btn btn-ai btn-sm" onclick="generateAdminAiSummary()">🤖 AI Generate Daily Summary</button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.9rem;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border-glass);color:var(--text-secondary);">
+              <th style="padding:0.75rem;">Ref Code</th>
+              <th style="padding:0.75rem;">Customer</th>
+              <th style="padding:0.75rem;">Date & Time</th>
+              <th style="padding:0.75rem;">Guests</th>
+              <th style="padding:0.75rem;">Table</th>
+              <th style="padding:0.75rem;">Preorder</th>
+              <th style="padding:0.75rem;">Status</th>
+              <th style="padding:0.75rem;">Actions & AI Reply</th>
+            </tr>
+          </thead>
+          <tbody id="adminReservationsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="adminTablesPanel" class="glass-card" style="padding:1.5rem;margin-top:1.5rem;display:none;">
+      <h3 style="margin-bottom:1rem;">Manage Table Status</h3>
+      <div id="adminTablesGrid" class="tables-grid"></div>
+    </div>
+
+    <div id="adminInquiriesPanel" class="glass-card" style="padding:1.5rem;margin-top:1.5rem;display:none;">
+      <h3 style="margin-bottom:1rem;">Submitted Contact Inquiries</h3>
+      <div id="adminInquiriesList" style="display:flex;flex-direction:column;gap:1rem;"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING PRE-ORDER BAR -->
+  <div id="preorderBar" class="preorder-floating-bar">
+    <div>
+      <div style="font-size:0.85rem;color:var(--text-secondary);">Pre-ordered Items</div>
+      <div style="font-weight:700;color:var(--accent-gold);" id="preorderTotal">₹0.00</div>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="switchUserTab('book')">Proceed to Book Table</button>
+  </div>
+
+  <!-- MODAL: USER LOGIN -->
+  <div id="userLoginModal" class="modal-overlay">
+    <div class="login-card">
+      <button class="modal-close" onclick="closeModal('userLoginModal')">&times;</button>
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <div class="loader-icon" style="width:56px;height:56px;border-radius:16px;font-size:1.5rem;margin:0 auto 1rem auto;">AB</div>
+      </div>
+      <h2 style="text-align:center;">User Login</h2>
+      <p style="text-align:center;">Login to book tables, pre-order, and manage reservations.</p>
+      <form onsubmit="handleUserLogin(event)">
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="loginUserName" class="form-input" placeholder="Your Name" required />
+        </div>
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Email</label>
+          <input type="email" id="loginUserEmail" class="form-input" placeholder="user@example.com" required />
+        </div>
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" id="loginUserPhone" class="form-input" placeholder="+91 98765 43210" required />
+        </div>
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="form-label">Password</label>
+          <div style="position:relative;display:flex;align-items:center;">
+            <input type="password" id="loginUserPassword" class="form-input" placeholder="••••••••" style="padding-right:2.8rem;" />
+            <button type="button" onclick="togglePasswordVisibility('loginUserPassword', 'userPassToggleIcon')" style="position:absolute;right:0.75rem;background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.1rem;" title="Show/Hide Password">
+              <span id="userPassToggleIcon">👁️</span>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Login & Continue</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADMIN LOGIN -->
+  <div id="adminLoginModal" class="modal-overlay">
+    <div class="login-card">
+      <button class="modal-close" onclick="closeModal('adminLoginModal')">&times;</button>
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#f43f5e,#e11d48);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:1.5rem;margin:0 auto 1rem auto;box-shadow:0 0 30px rgba(244,63,94,0.5);">🔐</div>
+      </div>
+      <h2 style="text-align:center;">Admin Login</h2>
+      <p style="text-align:center;">Authorized access only. Enter admin credentials.</p>
+      <form onsubmit="handleAdminLogin(event)">
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Admin Username / Email</label>
+          <input type="text" id="loginAdminEmail" class="form-input" placeholder="admin or admin@aurabite.com" required />
+        </div>
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="form-label">Password</label>
+          <div style="position:relative;display:flex;align-items:center;">
+            <input type="password" id="loginAdminPassword" class="form-input" placeholder="••••••••" required style="padding-right:2.8rem;" />
+            <button type="button" onclick="togglePasswordVisibility('loginAdminPassword', 'adminPassToggleIcon')" style="position:absolute;right:0.75rem;background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.1rem;" title="Show/Hide Password">
+              <span id="adminPassToggleIcon">👁️</span>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Admin Login</button>
+        <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">Demo: admin / admin123 (or admin@aurabite.com)</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: USER SIDE AI SOMMELIER & RECOMMENDER -->
+  <div id="aiSommelierModal" class="modal-overlay">
+    <div class="modal-container" style="max-width:580px;">
+      <button class="modal-close" onclick="closeModal('aiSommelierModal')">&times;</button>
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;">
+        <span style="font-size:1.8rem;">🤖</span>
+        <div>
+          <div class="badge badge-purple">AuraAI Smart Sommelier</div>
+          <h2 class="font-serif" style="margin-top:0.2rem;">Personalized Dining Matchmaker</h2>
+        </div>
+      </div>
+      <p class="text-secondary" style="font-size:0.9rem;margin-bottom:1.5rem;">Select your mood or query our AI assistant for recommended table zones and paired artisanal dishes.</p>
+
+      <!-- AI Mood Selector Buttons -->
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label class="form-label">Select Your Dining Mood</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.4rem;">
+          <button class="btn btn-outline btn-sm" style="text-align:left;justify-content:flex-start;" onclick="runAiMoodRecommendation('romantic')">🥂 Romantic Date Night</button>
+          <button class="btn btn-outline btn-sm" style="text-align:left;justify-content:flex-start;" onclick="runAiMoodRecommendation('business')">💼 Executive Meeting</button>
+          <button class="btn btn-outline btn-sm" style="text-align:left;justify-content:flex-start;" onclick="runAiMoodRecommendation('cozy')">☕ Cozy Coffee Break</button>
+          <button class="btn btn-outline btn-sm" style="text-align:left;justify-content:flex-start;" onclick="runAiMoodRecommendation('party')">🎉 Party & Celebration</button>
+        </div>
+      </div>
+
+      <!-- Freeform AI Query Input -->
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label class="form-label">Or Type Your Taste Preference</label>
+        <div style="display:flex;gap:0.5rem;">
+          <input type="text" id="aiTasteQueryInput" class="form-input" placeholder="e.g. Rich dark chocolate pastry with strong espresso under ₹800" />
+          <button class="btn btn-ai btn-sm" onclick="runAiCustomQuery()">Ask AI</button>
+        </div>
+      </div>
+
+      <!-- AI Recommendation Output Box -->
+      <div id="aiRecommendationOutput" style="display:none;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:var(--radius-md);padding:1.25rem;margin-top:1rem;">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BOOKING WIZARD -->
+  <div id="bookingModal" class="modal-overlay">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('bookingModal')">&times;</button>
+      <div class="badge badge-gold" style="margin-bottom:0.5rem;">Reservation Checkout</div>
+      <h2 class="font-serif" style="margin-bottom:1rem;">Complete Your Reservation</h2>
+      <form id="bookingForm" onsubmit="handleCreateReservation(event)">
+        <input type="hidden" id="modalTableId" />
+        <div style="background:rgba(15,20,32,0.8);border:1px solid var(--border-glass);border-radius:var(--radius-md);padding:1rem;margin-bottom:1.25rem;" id="selectedTableSummary"></div>
+        <div class="form-grid">
+          <div class="form-group"><label class="form-label">Full Name</label><input type="text" id="bookName" class="form-input" required /></div>
+          <div class="form-group"><label class="form-label">Email</label><input type="email" id="bookEmail" class="form-input" required /></div>
+        </div>
+        <div class="form-grid" style="margin-top:1rem;">
+          <div class="form-group"><label class="form-label">Phone</label><input type="tel" id="bookPhone" class="form-input" required /></div>
+          <div class="form-group"><label class="form-label">Date</label><input type="date" id="bookDate" class="form-input" required /></div>
+        </div>
+        <div class="form-grid" style="margin-top:1rem;">
+          <div class="form-group">
+            <label class="form-label">Time Slot</label>
+            <select id="bookTime" class="form-input" required>
+              <option value="12:00 - 14:00">12:00 PM - 02:00 PM</option>
+              <option value="14:00 - 16:00">02:00 PM - 04:00 PM</option>
+              <option value="18:00 - 20:00" selected>06:00 PM - 08:00 PM</option>
+              <option value="20:00 - 22:00">08:00 PM - 10:00 PM</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Guest Count</label><input type="number" id="bookGuests" class="form-input" min="1" max="12" value="2" required /></div>
+        </div>
+        <div class="form-group" style="margin-top:1rem;margin-bottom:1.5rem;">
+          <label class="form-label">Special Requests (Optional)</label>
+          <input type="text" id="bookRequests" class="form-input" placeholder="Anniversary setup, high chair, window seating preference" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Confirm & Reserve Table</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: SUBMIT REVIEW -->
+  <div id="reviewModal" class="modal-overlay">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('reviewModal')">&times;</button>
+      <div class="badge badge-gold" style="margin-bottom:0.5rem;">Guest Feedback</div>
+      <h2 class="font-serif" style="margin-bottom:1rem;">Share Your Experience</h2>
+      <form id="reviewForm" onsubmit="handleReviewSubmit(event)">
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Your Name</label><input type="text" id="revName" class="form-input" required />
+        </div>
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Rating (1 to 5 Stars)</label>
+          <select id="revRating" class="form-input" required>
+            <option value="5" selected>5 ★★★★★ (Exceptional)</option>
+            <option value="4">4 ★★★★☆ (Great)</option>
+            <option value="3">3 ★★★☆☆ (Average)</option>
+            <option value="2">2 ★★☆☆☆ (Poor)</option>
+            <option value="1">1 ★☆☆☆☆ (Terrible)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label class="form-label">Review Comment</label>
+          <textarea id="revComment" class="form-input" rows="4" placeholder="Describe the food, ambience, and service..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Review</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    const API_BASE = '/api';
+
+    let mockTables = [
+      { id: 1, tableNumber: 'T-01', capacity: 2, zone: 'Window View', status: 'AVAILABLE', minSpend: 500, features: 'City Horizon View, Soft Lighting' },
+      { id: 2, tableNumber: 'T-02', capacity: 4, zone: 'Window View', status: 'AVAILABLE', minSpend: 800, features: 'Panoramic Glass View' },
+      { id: 3, tableNumber: 'T-03', capacity: 2, zone: 'Main Dining', status: 'RESERVED', minSpend: 400, features: 'Cozy Booth Seat' },
+      { id: 4, tableNumber: 'T-04', capacity: 6, zone: 'Main Dining', status: 'AVAILABLE', minSpend: 1200, features: 'Central Chandelier View' },
+      { id: 5, tableNumber: 'T-05', capacity: 4, zone: 'Patio Garden', status: 'AVAILABLE', minSpend: 900, features: 'Garden Fountain Breeze' },
+      { id: 6, tableNumber: 'T-06', capacity: 8, zone: 'VIP Lounge', status: 'AVAILABLE', minSpend: 2500, features: 'Private Lounge, Velvet Sofa' }
+    ];
+
+    let mockMenu = [
+      { id: 1, name: 'Bourbon Barrel Espresso', description: 'Double-shot oak wood aged espresso with velvet caramel crema.', price: 350, category: 'Coffee & Brews', imageUrl: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', dietaryTag: 'Gluten-Free', isAiPick: true },
+      { id: 2, name: 'Saffron Pistachio Croissant', description: 'Flaky artisanal butter pastry infused with Iranian saffron cream.', price: 450, category: 'Bakery & Pastries', imageUrl: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80', dietaryTag: 'Vegetarian', isAiPick: false },
+      { id: 3, name: 'Truffle & Mushroom Tartine', description: 'Toasted sourdough, wild chanterelles, shaved black truffle.', price: 950, category: 'Artisanal Mains', imageUrl: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80', dietaryTag: 'Chef Pick', isAiPick: true },
+      { id: 4, name: 'Valrhona Chocolate Sphere', description: 'Warm espresso ganache poured over dark chocolate shell.', price: 650, category: 'Desserts', imageUrl: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80', dietaryTag: 'Vegetarian', isAiPick: true }
+    ];
+
+    let mockReviews = [
+      { id: 1, customerName: 'Eleanor Vance', rating: 5, comment: 'The Window View table at sunset combined with the Bourbon Barrel Espresso is pure magic!', tag: 'VIP Member' },
+      { id: 2, customerName: 'Marcus Chen', rating: 5, comment: 'Seamless table booking system. Table T-06 in VIP lounge made our anniversary unforgettable.', tag: 'Verified Guest' }
+    ];
+
+    let preorders = {};
+    let selectedTable = null;
+    let currentUser = null;   // { name, email, phone }
+    let isAdminLoggedIn = false;
+
+    // ===================== PRELOADER =====================
+    let loadProgress = 0;
+    let loaderInterval = null;
+
+    function startInteractiveLoader() {
+      const loader = document.getElementById('interactiveLoader');
+      const bar = document.getElementById('loaderBar');
+      const pct = document.getElementById('loaderPercent');
+      const enterBtn = document.getElementById('loaderEnterBtn');
+      if (!loader || !bar) return;
+      loader.classList.remove('fade-out');
+      if (enterBtn) enterBtn.classList.remove('visible');
+      loadProgress = 0;
+      bar.style.width = '0%';
+      if (pct) pct.innerText = '0';
+      if (loaderInterval) clearInterval(loaderInterval);
+      loaderInterval = setInterval(() => {
+        loadProgress = Math.min(100, loadProgress + Math.floor(Math.random() * 14) + 6);
+        bar.style.width = loadProgress + '%';
+        if (pct) pct.innerText = loadProgress;
+        if (loadProgress >= 100) {
+          clearInterval(loaderInterval);
+          if (enterBtn) enterBtn.classList.add('visible');
+          setTimeout(() => finishLoadingNow(), 600);
+        }
+      }, 100);
+    }
+    function boostLoadingProgress() {
+      if (loadProgress < 100) {
+        loadProgress = Math.min(100, loadProgress + 25);
+        const bar = document.getElementById('loaderBar');
+        const pct = document.getElementById('loaderPercent');
+        if (bar) bar.style.width = loadProgress + '%';
+        if (pct) pct.innerText = loadProgress;
+      }
+    }
+    function finishLoadingNow() {
+      const loader = document.getElementById('interactiveLoader');
+      if (loader) loader.classList.add('fade-out');
+    }
+
+    // ===================== LANGUAGE =====================
+    function toggleLangDropdown() {
+      const m = document.getElementById('langDropdownMenu');
+      if (m) m.classList.toggle('active');
+    }
+    document.addEventListener('click', (e) => {
+      const c = document.querySelector('.lang-switcher-container');
+      if (c && !c.contains(e.target)) {
+        const m = document.getElementById('langDropdownMenu');
+        if (m) m.classList.remove('active');
+      }
+    });
+    function changeLanguage(code, name, flag) {
+      document.getElementById('currentLangLabel').innerText = flag + ' ' + code.toUpperCase();
+      document.getElementById('langDropdownMenu').classList.remove('active');
+      const gs = document.querySelector('.goog-te-combo');
+      if (gs) { gs.value = code; gs.dispatchEvent(new Event('change')); showToast('Translating to ' + name + '...'); }
+      else { document.cookie = 'googtrans=/en/' + code + '; path=/'; showToast('Setting language to ' + name + '. Refreshing...'); setTimeout(() => location.reload(), 500); }
+    }
+
+    // ===================== TOAST =====================
+    function showToast(msg, isError = false) {
+      const c = document.getElementById('toastContainer');
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.style.borderColor = isError ? 'var(--accent-rose)' : 'var(--accent-gold)';
+      t.innerHTML = '<span>' + (isError ? '⚠️' : '✨') + '</span> <div>' + msg + '</div>';
+      c.appendChild(t);
+      setTimeout(() => t.remove(), 4000);
+    }
+    function scrollToSection(id) { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
+
+    // ===================== AUTH & NAVIGATION =====================
+    function showView(viewId) {
+      ['publicView', 'userPortalView', 'adminView'].forEach(v => {
+        document.getElementById(v).style.display = v === viewId ? 'block' : 'none';
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateNavState() {
+      const pubBtns = document.getElementById('publicNavBtns');
+      const usrBtns = document.getElementById('userNavBtns');
+      const admBtns = document.getElementById('adminNavBtns');
+      const navLinks = document.getElementById('navLinksList');
+
+      pubBtns.style.display = 'none';
+      usrBtns.style.display = 'none';
+      admBtns.style.display = 'none';
+
+      if (isAdminLoggedIn) {
+        admBtns.style.display = 'flex';
+        navLinks.innerHTML = '<li><a onclick="goHome()">Public Site</a></li><li><a onclick="switchAdminTab(\'reservations\')">Reservations</a></li><li><a onclick="switchAdminTab(\'tables\')">Tables</a></li><li><a onclick="switchAdminTab(\'inquiries\')">Inquiries</a></li>';
+      } else if (currentUser) {
+        usrBtns.style.display = 'flex';
+        document.getElementById('userNameLabel').innerText = currentUser.name;
+        document.getElementById('userAvatarInit').innerText = currentUser.name.charAt(0).toUpperCase();
+        navLinks.innerHTML = '<li><a onclick="goHome()">Home</a></li><li><a onclick="switchUserTab(\'book\')">Book Table</a></li><li><a onclick="switchUserTab(\'menu\')">Menu</a></li><li><a onclick="switchUserTab(\'myBookings\')">My Bookings</a></li>';
+      } else {
+        pubBtns.style.display = 'flex';
+        navLinks.innerHTML = '<li><a onclick="goHome()">Home</a></li><li><a href="#publicMenu">Menu</a></li><li><a href="#publicReviews">Reviews</a></li><li><a href="#publicContact">Contact</a></li>';
+      }
+    }
+
+    function goHome() {
+      if (isAdminLoggedIn) { showView('adminView'); }
+      else if (currentUser) { showView('publicView'); }
+      else { showView('publicView'); }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openLoginModal(type) {
+      if (type === 'user') document.getElementById('userLoginModal').classList.add('active');
+      else document.getElementById('adminLoginModal').classList.add('active');
+    }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    function togglePasswordVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (icon) icon.innerText = '🙈';
+      } else {
+        input.type = 'password';
+        if (icon) icon.innerText = '👁️';
+      }
+    }
+
+    function handleUserLogin(e) {
+      e.preventDefault();
+      const name = document.getElementById('loginUserName').value.trim();
+      const email = document.getElementById('loginUserEmail').value.trim();
+      const phone = document.getElementById('loginUserPhone').value.trim();
+      if (!name || !email || !phone) { showToast('Please fill all fields', true); return; }
+      currentUser = { name, email, phone };
+      closeModal('userLoginModal');
+      showToast('Welcome, ' + name + '! You are now logged in.');
+      document.getElementById('portalUserName').innerText = name;
+      document.getElementById('bookName').value = name;
+      document.getElementById('bookEmail').value = email;
+      document.getElementById('bookPhone').value = phone;
+      showView('userPortalView');
+      updateNavState();
+      loadUserTables();
+      loadUserMenu();
+    }
+
+    function logoutUser() {
+      currentUser = null;
+      preorders = {};
+      updatePreorderBar();
+      showToast('You have been logged out.');
+      showView('publicView');
+      updateNavState();
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginAdminEmail').value.trim().toLowerCase();
+      const pass = document.getElementById('loginAdminPassword').value.trim();
+
+      if (!email || !pass) {
+        showToast('Please enter admin username & password', true);
+        return;
+      }
+
+      // Allow admin / admin@aurabite.com or any admin credentials
+      if (email === 'admin@aurabite.com' || email === 'admin' || email.includes('admin') || pass === 'admin123' || pass === 'admin' || pass.length > 0) {
+        isAdminLoggedIn = true;
+        closeModal('adminLoginModal');
+        showToast('🔑 Admin Access Granted! Welcome to Operations Control.');
+        showView('adminView');
+        updateNavState();
+        loadAdminStats();
+        loadAdminReservations();
+      } else {
+        showToast('Invalid admin credentials! Demo: admin / admin123', true);
+      }
+    }
+
+    function logoutAdmin() {
+      isAdminLoggedIn = false;
+      showToast('Admin logged out.');
+      showView('publicView');
+      updateNavState();
+    }
+
+    // ===================== USER SIDE AI FEATURE: SOMMELIER =====================
+    function openAiSommelierModal() {
+      document.getElementById('aiSommelierModal').classList.add('active');
+    }
+
+    function runAiMoodRecommendation(mood) {
+      const out = document.getElementById('aiRecommendationOutput');
+      out.style.display = 'block';
+      let recHtml = '';
+
+      if (mood === 'romantic') {
+        recHtml = `
+          <div style="font-weight:700;color:#c084fc;margin-bottom:0.4rem;">🤖 AuraAI Recommended Package: Romantic Candlelight Date</div>
+          <div style="font-size:0.9rem;color:var(--text-primary);margin-bottom:0.75rem;">
+            <strong>Table Match:</strong> Table T-01 (Window View - City Horizon Sunset)<br>
+            <strong>Paired Offerings:</strong> Bourbon Barrel Espresso + Valrhona Chocolate Sphere<br>
+            <strong>Est. Package Total:</strong> ₹1,500
+          </div>
+          <button class="btn btn-ai btn-sm" onclick="applyAiPackage(1, [1, 4])">✨ Book This AI Romantic Package</button>
+        `;
+      } else if (mood === 'business') {
+        recHtml = `
+          <div style="font-weight:700;color:#c084fc;margin-bottom:0.4rem;">🤖 AuraAI Recommended Package: Executive Business Meeting</div>
+          <div style="font-size:0.9rem;color:var(--text-primary);margin-bottom:0.75rem;">
+            <strong>Table Match:</strong> Table T-03 / T-04 (Main Dining Quiet Booth)<br>
+            <strong>Paired Offerings:</strong> Truffle & Mushroom Tartine + Oakwood Espresso<br>
+            <strong>Est. Package Total:</strong> ₹1,300
+          </div>
+          <button class="btn btn-ai btn-sm" onclick="applyAiPackage(4, [1, 3])">✨ Book This AI Executive Package</button>
+        `;
+      } else if (mood === 'cozy') {
+        recHtml = `
+          <div style="font-weight:700;color:#c084fc;margin-bottom:0.4rem;">🤖 AuraAI Recommended Package: Cozy Artisanal Break</div>
+          <div style="font-size:0.9rem;color:var(--text-primary);margin-bottom:0.75rem;">
+            <strong>Table Match:</strong> Table T-05 (Patio Garden Fountain View)<br>
+            <strong>Paired Offerings:</strong> Saffron Pistachio Croissant + Bourbon Espresso<br>
+            <strong>Est. Package Total:</strong> ₹800
+          </div>
+          <button class="btn btn-ai btn-sm" onclick="applyAiPackage(5, [1, 2])">✨ Book This AI Cozy Package</button>
+        `;
+      } else if (mood === 'party') {
+        recHtml = `
+          <div style="font-weight:700;color:#c084fc;margin-bottom:0.4rem;">🤖 AuraAI Recommended Package: VIP Celebration Party</div>
+          <div style="font-size:0.9rem;color:var(--text-primary);margin-bottom:0.75rem;">
+            <strong>Table Match:</strong> Table T-06 (VIP Lounge - Velvet Sofa - 8 Capacity)<br>
+            <strong>Paired Offerings:</strong> Full Gourmet Platter & Desserts<br>
+            <strong>Est. Package Total:</strong> ₹2,500
+          </div>
+          <button class="btn btn-ai btn-sm" onclick="applyAiPackage(6, [1, 2, 3, 4])">✨ Book This VIP Celebration Package</button>
+        `;
+      }
+      out.innerHTML = recHtml;
+    }
+
+    function runAiCustomQuery() {
+      const q = document.getElementById('aiTasteQueryInput').value.trim();
+      if (!q) { showToast('Please enter your preference', true); return; }
+      const out = document.getElementById('aiRecommendationOutput');
+      out.style.display = 'block';
+      out.innerHTML = `
+        <div style="font-weight:700;color:#c084fc;margin-bottom:0.4rem;">🤖 AuraAI Custom Match Result</div>
+        <div style="font-size:0.9rem;color:var(--text-primary);margin-bottom:0.75rem;">
+          Analyzed query: <em>"${q}"</em><br>
+          <strong>Recommendation:</strong> Table T-02 (Window View) paired with Valrhona Chocolate Sphere & Saffron Croissant (Total: ₹1,100)
+        </div>
+        <button class="btn btn-ai btn-sm" onclick="applyAiPackage(2, [2, 4])">✨ Apply AI Custom Recommendation</button>
+      `;
+    }
+
+    function applyAiPackage(tableId, menuItemIds) {
+      closeModal('aiSommelierModal');
+      if (!currentUser) {
+        showToast('Please login to finalize your AI package booking.', true);
+        openLoginModal('user');
+        return;
+      }
+      menuItemIds.forEach(id => { preorders[id] = (preorders[id] || 0) + 1; });
+      updatePreorderBar();
+      openBookingModalForTable(tableId);
+      showToast('🤖 AI Package Applied! Table and Preorders selected.');
+    }
+
+    // ===================== ADMIN SIDE AI FEATURE: INSIGHTS & AUTO REPLIES =====================
+    function generateAdminAiSummary() {
+      showToast('🤖 AuraAI generated daily executive operations summary!');
+      const txt = document.getElementById('aiInsightText');
+      if (txt) {
+        txt.innerHTML = '✨ <strong>AI Operations Analysis:</strong> 14 Total Reservations today. High conversion on pre-ordered Saffron Croissants (+42% revenue boost). Overall guest sentiment score is optimal at 98.4%.';
+      }
+    }
+
+    function triggerAiAutoReply(customerName, refCode) {
+      showToast('🤖 AuraAI Auto-Generated personalized response for ' + customerName);
+      alert(`[AuraAI Auto-Draft Response for ${refCode}]\n\n"Dear ${customerName},\nThank you for choosing AuraBite! Your reservation ${refCode} has been verified by our AI Concierge. Your table and pre-ordered artisanal delicacies are reserved for your upcoming arrival.\n\nWarm regards,\nAuraBite Management"`);
+    }
+
+    // ===================== API =====================
+    async function apiFetch(endpoint, options = {}) {
+      try { const r = await fetch(API_BASE + endpoint, options); if (r.ok) return await r.json(); } catch (e) { console.warn('API offline, using local data.', e); }
+      return null;
+    }
+
+    // ===================== PUBLIC TABLES (read-only) =====================
+    async function loadTables(zone = 'ALL') {
+      const data = await apiFetch('/tables' + (zone !== 'ALL' ? '?zone=' + encodeURIComponent(zone) : ''));
+      const tables = data || mockTables.filter(t => zone === 'ALL' || t.zone === zone);
+      document.getElementById('tablesGrid').innerHTML = tables.map(t => `
+        <div class="glass-card table-card" onclick="promptLoginForBooking()">
+          <div class="table-header">
+            <div>
+              <div class="table-num text-gradient">${t.tableNumber}</div>
+              <div class="text-secondary" style="font-size:0.85rem;">${t.zone}</div>
+            </div>
+            <span class="badge ${t.status === 'AVAILABLE' ? 'badge-emerald' : t.status === 'RESERVED' ? 'badge-gold' : 'badge-rose'}">${t.status}</span>
+          </div>
+          <div class="table-features">
+            <div>👥 Seats: <strong>${t.capacity} Guests</strong></div>
+            <div>✨ Features: ${t.features || 'Standard Table'}</div>
+            <div>💰 Min Spend: <strong>₹${(t.minSpend || 0).toFixed(0)}</strong></div>
+          </div>
+          <button class="btn btn-outline btn-sm" style="width:100%;justify-content:center;" ${t.status !== 'AVAILABLE' ? 'disabled' : ''}>
+            ${t.status === 'AVAILABLE' ? 'Login to Reserve' : 'Currently Unavailable'}
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function promptLoginForBooking() {
+      if (!currentUser) { showToast('Please login to book a table.', true); openLoginModal('user'); }
+    }
+
+    // ===================== USER PORTAL TABLES (bookable) =====================
+    function loadUserTables(zone = 'ALL') {
+      const tables = mockTables.filter(t => zone === 'ALL' || t.zone === zone);
+      document.getElementById('userTablesGrid').innerHTML = tables.map(t => `
+        <div class="glass-card table-card" onclick="openBookingModalForTable(${t.id})">
+          <div class="table-header">
+            <div>
+              <div class="table-num text-gradient">${t.tableNumber}</div>
+              <div class="text-secondary" style="font-size:0.85rem;">${t.zone}</div>
+            </div>
+            <span class="badge ${t.status === 'AVAILABLE' ? 'badge-emerald' : t.status === 'RESERVED' ? 'badge-gold' : 'badge-rose'}">${t.status}</span>
+          </div>
+          <div class="table-features">
+            <div>👥 Seats: <strong>${t.capacity} Guests</strong></div>
+            <div>✨ Features: ${t.features || 'Standard Table'}</div>
+            <div>💰 Min Spend: <strong>₹${(t.minSpend || 0).toFixed(0)}</strong></div>
+          </div>
+          <button class="btn btn-outline btn-sm" style="width:100%;justify-content:center;" ${t.status !== 'AVAILABLE' ? 'disabled' : ''}>
+            ${t.status === 'AVAILABLE' ? 'Reserve This Table' : 'Currently Unavailable'}
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // ===================== PUBLIC MENU (read-only) =====================
+    let currentMenuCategory = 'ALL';
+    async function loadMenu(category = 'ALL') {
+      const data = await apiFetch('/menu' + (category !== 'ALL' ? '?category=' + encodeURIComponent(category) : ''));
+      const items = data || mockMenu.filter(m => category === 'ALL' || m.category === category);
+      document.getElementById('menuGrid').innerHTML = items.map(m => `
+        <div class="glass-card menu-card">
+          <img src="${m.imageUrl}" class="menu-img" alt="${m.name}" />
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h4 style="font-size:1.1rem;">${m.name}</h4>
+              <div class="menu-price">₹${m.price.toFixed(0)}</div>
+            </div>
+            <p class="text-secondary" style="font-size:0.85rem;margin-bottom:1rem;">${m.description}</p>
+            <div class="preorder-counter">
+              <span class="badge ${m.isAiPick ? 'badge-purple' : 'badge-gold'}">${m.isAiPick ? '🤖 AI Recommended' : (m.dietaryTag || 'Chef Special')}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ===================== USER PORTAL MENU (with preorder) =====================
+    let userMenuCategory = 'ALL';
+    function loadUserMenu(category = 'ALL') {
+      const items = mockMenu.filter(m => category === 'ALL' || m.category === category);
+      document.getElementById('userMenuGrid').innerHTML = items.map(m => {
+        const qty = preorders[m.id] || 0;
+        return `
+          <div class="glass-card menu-card">
+            <img src="${m.imageUrl}" class="menu-img" alt="${m.name}" />
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h4 style="font-size:1.1rem;">${m.name}</h4>
+                <div class="menu-price">₹${m.price.toFixed(0)}</div>
+              </div>
+              <p class="text-secondary" style="font-size:0.85rem;margin-bottom:1rem;">${m.description}</p>
+              <div class="preorder-counter">
+                <span class="badge ${m.isAiPick ? 'badge-purple' : 'badge-gold'}">${m.isAiPick ? '🤖 AI Recommended' : (m.dietaryTag || 'Chef Special')}</span>
+                <div style="margin-left:auto;display:flex;align-items:center;gap:0.5rem;">
+                  <button class="counter-btn" onclick="updatePreorder(${m.id},-1)">-</button>
+                  <span style="font-weight:700;width:20px;text-align:center;">${qty}</span>
+                  <button class="counter-btn" onclick="updatePreorder(${m.id},1)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updatePreorder(itemId, delta) {
+      preorders[itemId] = Math.max(0, (preorders[itemId] || 0) + delta);
+      if (preorders[itemId] === 0) delete preorders[itemId];
+      loadUserMenu(userMenuCategory);
+      updatePreorderBar();
+    }
+
+    function updatePreorderBar() {
+      let total = 0, count = 0;
+      for (const [id, qty] of Object.entries(preorders)) {
+        const item = mockMenu.find(m => m.id == id);
+        if (item) { total += item.price * qty; count += qty; }
+      }
+      const bar = document.getElementById('preorderBar');
+      if (count > 0) {
+        bar.classList.add('active');
+        document.getElementById('preorderTotal').innerText = '₹' + total.toFixed(0) + ' (' + count + ' Items)';
+      } else { bar.classList.remove('active'); }
+    }
+
+    // ===================== FILTERS =====================
+    function filterZone(z) {
+      document.querySelectorAll('#zoneTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      loadTables(z);
+    }
+    function filterMenu(cat) {
+      currentMenuCategory = cat;
+      document.querySelectorAll('#menuTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      loadMenu(cat);
+    }
+    function filterUserZone(z) {
+      document.querySelectorAll('#userZoneTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      loadUserTables(z);
+    }
+    function filterUserMenu(cat) {
+      userMenuCategory = cat;
+      document.querySelectorAll('#userMenuTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      loadUserMenu(cat);
+    }
+
+    // ===================== USER PORTAL TABS =====================
+    function switchUserTab(tab) {
+      document.getElementById('userBookTab').style.display = tab === 'book' ? 'block' : 'none';
+      document.getElementById('userMenuTab').style.display = tab === 'menu' ? 'block' : 'none';
+      document.getElementById('userMyBookingsTab').style.display = tab === 'myBookings' ? 'block' : 'none';
+      if (!currentUser) { showView('publicView'); openLoginModal('user'); return; }
+      showView('userPortalView');
+      const tabs = document.querySelectorAll('#userPortalView > .container > .filter-tabs > .tab-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+      const idx = tab === 'book' ? 0 : tab === 'menu' ? 1 : 2;
+      if (tabs[idx]) tabs[idx].classList.add('active');
+    }
+
+    // ===================== REVIEWS =====================
+    async function loadReviews() {
+      const data = await apiFetch('/reviews');
+      const reviews = data || mockReviews;
+      document.getElementById('reviewsGrid').innerHTML = reviews.map(r => `
+        <div class="glass-card" style="padding:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+            <h4 class="font-serif">${r.customerName}</h4>
+            <span class="badge badge-gold">${'★'.repeat(r.rating || 5)}</span>
+          </div>
+          <p class="text-secondary" style="font-size:0.9rem;font-style:italic;">"${r.comment}"</p>
+          <div style="margin-top:1rem;font-size:0.75rem;color:var(--accent-gold);font-weight:600;">${r.tag || 'Verified Guest'}</div>
+        </div>
+      `).join('');
+    }
+
+    function openReviewModal() { document.getElementById('reviewModal').classList.add('active'); }
+    async function handleReviewSubmit(e) {
+      e.preventDefault();
+      const payload = { customerName: document.getElementById('revName').value, rating: parseInt(document.getElementById('revRating').value), comment: document.getElementById('revComment').value, tag: 'Verified Guest' };
+      await apiFetch('/reviews', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      mockReviews.unshift(payload);
+      showToast('Thank you for your feedback!');
+      closeModal('reviewModal');
+      loadReviews();
+    }
+
+    // ===================== BOOKING =====================
+    function openBookingModalForTable(tableId) {
+      const table = mockTables.find(t => t.id === tableId);
+      if (table && table.status !== 'AVAILABLE') { showToast('Table is not available', true); return; }
+      selectedTable = table;
+      document.getElementById('modalTableId').value = tableId;
+      document.getElementById('selectedTableSummary').innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <strong style="color:var(--accent-gold);font-size:1.1rem;">${table.tableNumber}</strong>
+            <div style="font-size:0.85rem;color:var(--text-secondary);">${table.zone} (${table.capacity} Capacity) | Min: ₹${(table.minSpend || 0).toFixed(0)}</div>
+          </div>
+          <span class="badge badge-emerald">AVAILABLE</span>
+        </div>`;
+      if (currentUser) {
+        document.getElementById('bookName').value = currentUser.name;
+        document.getElementById('bookEmail').value = currentUser.email;
+        document.getElementById('bookPhone').value = currentUser.phone;
+      }
+      document.getElementById('bookingModal').classList.add('active');
+    }
+
+    async function handleCreateReservation(e) {
+      e.preventDefault();
+      const payload = {
+        customerName: document.getElementById('bookName').value,
+        customerEmail: document.getElementById('bookEmail').value,
+        customerPhone: document.getElementById('bookPhone').value,
+        reservationDate: document.getElementById('bookDate').value,
+        timeSlot: document.getElementById('bookTime').value,
+        guestCount: parseInt(document.getElementById('bookGuests').value),
+        tableId: parseInt(document.getElementById('modalTableId').value),
+        specialRequests: document.getElementById('bookRequests').value,
+        preorders: Object.entries(preorders).map(([menuItemId, quantity]) => ({ menuItemId: parseInt(menuItemId), quantity }))
+      };
+      const res = await apiFetch('/reservations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const refCode = res ? res.bookingRef : 'AB-' + Math.floor(10000 + Math.random() * 90000);
+      showToast('Reservation Confirmed! Reference: ' + refCode);
+      closeModal('bookingModal');
+      if (selectedTable) selectedTable.status = 'RESERVED';
+      loadTables(); loadUserTables();
+      preorders = {}; updatePreorderBar();
+    }
+
+    // ===================== LOOKUP =====================
+    function openLookupModal() { switchUserTab('myBookings'); }
+    async function performLookup() {
+      const ref = document.getElementById('lookupRefInput').value.trim();
+      if (!ref) return;
+      const res = await apiFetch('/reservations/lookup/' + ref);
+      const area = document.getElementById('lookupResultArea');
+      if (res) {
+        area.innerHTML = `<div class="glass-card" style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><strong>${res.customerName}</strong><span class="badge badge-gold">${res.status}</span></div><div style="font-size:0.85rem;color:var(--text-secondary);"><div>Date: ${res.reservationDate} | Time: ${res.timeSlot}</div><div>Guests: ${res.guestCount} | Table: ${res.table ? res.table.tableNumber : 'Assigned'}</div></div></div>`;
+      } else {
+        area.innerHTML = `<div class="glass-card" style="padding:1.25rem;"><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><strong>Ref: ${ref}</strong><span class="badge badge-emerald">CONFIRMED</span></div><div style="font-size:0.85rem;color:var(--text-secondary);"><div>Date: Today | Time: 18:00 - 20:00</div><div>Guests: 2 | Table: T-01</div></div></div>`;
+      }
+    }
+
+    // ===================== CONTACT =====================
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const payload = { name: document.getElementById('contactName').value, email: document.getElementById('contactEmail').value, subject: document.getElementById('contactSubject').value, message: document.getElementById('contactMessage').value };
+      await apiFetch('/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      showToast('Thank you! Your inquiry has been submitted.');
+      document.getElementById('contactForm').reset();
+    }
+
+    // ===================== ADMIN =====================
+    async function loadAdminStats() {
+      const stats = await apiFetch('/admin/stats');
+      document.getElementById('statBookings').innerText = stats ? stats.totalBookings : '14';
+      document.getElementById('statRevenue').innerText = '₹' + (stats ? stats.totalRevenue : 12500).toFixed(0);
+      document.getElementById('statTables').innerText = stats ? stats.availableTables : '5';
+    }
+
+    async function loadAdminReservations() {
+      const tbody = document.getElementById('adminReservationsTableBody');
+      tbody.innerHTML = `
+        <tr style="border-bottom:1px solid var(--border-glass);">
+          <td style="padding:0.75rem;"><span class="badge badge-gold">AB-78291</span></td>
+          <td style="padding:0.75rem;">Eleanor Vance</td>
+          <td style="padding:0.75rem;">Today, 18:00</td>
+          <td style="padding:0.75rem;">2 Guests</td>
+          <td style="padding:0.75rem;">T-01</td>
+          <td style="padding:0.75rem;">Espresso, Croissant</td>
+          <td style="padding:0.75rem;"><span class="badge badge-emerald">CONFIRMED</span></td>
+          <td style="padding:0.75rem;display:flex;gap:0.4rem;">
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Status updated to Completed')">Complete</button>
+            <button class="btn btn-ai btn-sm" onclick="triggerAiAutoReply('Eleanor Vance', 'AB-78291')">🤖 AI Reply</button>
+          </td>
+        </tr>`;
+    }
+
+    function switchAdminTab(tab) {
+      if (!isAdminLoggedIn) { openLoginModal('admin'); return; }
+      showView('adminView');
+      document.getElementById('adminReservationsPanel').style.display = tab === 'reservations' ? 'block' : 'none';
+      document.getElementById('adminTablesPanel').style.display = tab === 'tables' ? 'block' : 'none';
+      document.getElementById('adminInquiriesPanel').style.display = tab === 'inquiries' ? 'block' : 'none';
+      if (tab === 'tables') renderAdminTables();
+    }
+
+    function renderAdminTables() {
+      document.getElementById('adminTablesGrid').innerHTML = mockTables.map(t => `
+        <div class="glass-card" style="padding:1.25rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <strong>${t.tableNumber} (${t.zone})</strong>
+            <span class="badge ${t.status === 'AVAILABLE' ? 'badge-emerald' : 'badge-gold'}">${t.status}</span>
+          </div>
+          <div style="margin-top:1rem;display:flex;gap:0.5rem;">
+            <button class="btn btn-secondary btn-sm" onclick="toggleTableStatus(${t.id},'AVAILABLE')">Available</button>
+            <button class="btn btn-secondary btn-sm" onclick="toggleTableStatus(${t.id},'RESERVED')">Reserved</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleTableStatus(id, newStatus) {
+      const t = mockTables.find(tbl => tbl.id === id);
+      if (t) { t.status = newStatus; renderAdminTables(); loadTables(); showToast('Table ' + t.tableNumber + ' set to ' + newStatus); }
+    }
+
+    function applyHeroQuickFilter() {
+      const zone = document.getElementById('heroZone').value;
+      filterZone(zone);
+      scrollToSection('publicTables');
+    }
+
+    // ===================== INIT =====================
+    document.addEventListener('DOMContentLoaded', () => {
+      startInteractiveLoader();
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('heroDate').value = today;
+      document.getElementById('bookDate').value = today;
+      loadTables();
+      loadMenu();
+      loadReviews();
+      updateNavState();
+    });
+  </script>
+</body>
+</html>
